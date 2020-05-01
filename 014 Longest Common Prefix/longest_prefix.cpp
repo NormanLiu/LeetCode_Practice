@@ -1,3 +1,6 @@
+//Runtime: 28 ms, faster than 7.78% of C++ online submissions for Longest Common Prefix.
+//Memory Usage: 17.5 MB, less than 6.45% of C++ online submissions for Longest Common Prefix.
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -14,7 +17,8 @@ public:
 
         for (int i=0;i<strs.size();i++)
         {
-            string first(strs[i][0]);
+            string first;
+            first = first + strs[i][0];
             test_strs.push_back(first);
             int l = strs[i].length();
             if(l > maxlength) maxlength = l;
@@ -24,23 +28,23 @@ public:
         {
             for (int j=1;j<strs.size();j++)
             {
-                if (test_strs[0] != test_strs[j]) return out_strs;
+                if (test_strs[0] != test_strs[j]) return out;
                 if (i<maxlength-1) test_strs[j] = test_strs[j] + strs[j][i+1];
             }
-            out_strs = test_strs[0];
+            out = test_strs[0];
             if (i<maxlength-1) test_strs[0] = test_strs[0] + strs[0][i+1];
         }
-        return out_strs;
+        return out;
 
     }
 };
 
 int main()
 {
-    string a("flower");
+    string a("alower");
     string b("flow");
     string c("flight");
-    int n[] = {a,b,c};
+    string n[] = {a,b,c};
     vector<string> strs(n,n+3);
 
     Solution sol;
